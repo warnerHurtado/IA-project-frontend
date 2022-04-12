@@ -1,5 +1,5 @@
 
-function dataURLtoFile(dataurl, filename) {
+export function dataURLtoFile(dataurl, filename) {
 
     var arr = dataurl.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
@@ -13,7 +13,5 @@ function dataURLtoFile(dataurl, filename) {
 
     return new File([u8arr], filename, { type: mime });
 }
-
-module.exports = { dataURLtoFile };
 
 
