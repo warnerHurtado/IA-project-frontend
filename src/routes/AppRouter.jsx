@@ -15,7 +15,7 @@ export const AppRouter = () => {
     const { user } = useContext( AuthContext );
 
     useEffect(() => {
-      user.logged && setIsLogged(true);
+      user.logged ? setIsLogged(true) : setIsLogged(false);
     }, [user])
     
     return (

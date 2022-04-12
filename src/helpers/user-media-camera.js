@@ -10,3 +10,7 @@ export const getUserMedia = async ( videoRef ) => {
     console.log(err);
   }
 };
+
+export const stopVideo = ( videoRef ) => {
+  videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+}
