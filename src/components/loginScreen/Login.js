@@ -1,5 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/authContext';
 import { dataURLtoFile } from '../../helpers/camera';
+import { types } from '../../types/types';
 
 const msRest = require("@azure/ms-rest-js");
 const Face = require("@azure/cognitiveservices-face");
@@ -15,8 +18,16 @@ export const Login = () => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
 
+    const navigate = useNavigate();
+    const { dispatch } = useContext( AuthContext );
+
     const [showCamera, setShowCamera] = useState(true);
     const [showMsg, setShowMsg] = useState(false);
+
+    const stopVideo = () => {
+        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+        setShowCamera(false);
+    }
 
     useEffect(() => {
         const getUserMedia = async () => {
@@ -59,7 +70,13 @@ export const Login = () => {
 
             console.log("Smile: " + face.faceAttributes.smile);
             if (face.faceAttributes.smile === 1) {
+
                 setShowCamera(false);
+                localStorage.setItem('user', JSON.stringify({ logged: true }));
+                dispatch({ type: types.login });
+                stopVideo();
+                navigate('/home', { replace: true });
+                
             }else {
                 setShowMsg(true);
             }
