@@ -1,8 +1,9 @@
 import { client } from '../azure-face-detection/azure-face-detection';
 import { dataURLtoFile } from '../helpers/camera'
+import { stopVideo } from './user-media-camera';
+import { types } from '../types/types';
 
-
-export const takeSnapshot = async ( canvasRef, videoRef, setShowCamera, setShowMsg  ) => {
+export const takeSnapshot = async (canvasRef, videoRef, setShowCamera, setShowMsg, dispatch) => {
 
   canvasRef.current.height = 300;
   canvasRef.current
@@ -20,15 +21,23 @@ export const takeSnapshot = async ( canvasRef, videoRef, setShowCamera, setShowM
     recognitionModel: "recognition_03",
   });
 
-  if (detected_faces.length > 0) {  
+  if (detected_faces.length > 0) {
     setShowCamera(true)
   }
 
-
   detected_faces.forEach(async function ({ faceAttributes }) {
     // Se debe de cambiar **Seguramente para las rutas o la redirección**
-    (faceAttributes.smile >= 0.90) ? setShowCamera(false) : setShowMsg(true) 
+    if (faceAttributes.smile >= 0.90) {
+      
+      setShowCamera(false);
+      stopVideo(videoRef);
+      dispatch({ type: types.login });
+
+    } else {
+      setShowMsg(true);
+    }
   })
+
 
 }
 
