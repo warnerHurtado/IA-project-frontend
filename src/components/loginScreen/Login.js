@@ -6,12 +6,15 @@ import { AuthContext } from '../../auth/authContext';
 import "./loginStyle.css";
 
 export const Login = () => {
+
+
   const [showCamera, setShowCamera] = useState(true);
   const [showMsg, setShowMsg] = useState(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const { dispatch } = useContext( AuthContext );
 
+  
   useEffect(() => {
     getUserMedia(videoRef);
   }, []);
