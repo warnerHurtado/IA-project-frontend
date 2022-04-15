@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { sendData } from '../../helpers/postData';
 
 const formsList = {
     car_model: [{ name: 'presentPrice', type: 'number', label: 'Precio presente', error: 'Debe ingresar un precio' }],
@@ -11,20 +12,26 @@ const formsList = {
     salary_years_calculator: [{ name: 'years', type: 'number', label: 'Años de experiencia', error: 'Debe ingresar un año' }]
 };
 
+let resultado = [];
+
 export const Predictions = ({ nameModel, searching }) => {
 
-    const [formsResult, setFormsResult] = useState([]);
-
-    const handleSubmit = (e) => {
+    const [result, setResult] = useState(null);
+    const handleSubmit = async(e) => {
         e.preventDefault();        
-
         formsList[nameModel].forEach( (a,index) => {
-            setFormsResult(formsResult.push(Number( e.target[index].value) ));
+            resultado.push(Number( e.target[index].value));
         });
-        
-        console.log(formsResult); 
-        
+
+        let data = await sendData(nameModel, resultado);
+        setResult(data?.prediction);
+        resultado = [];        
     };
+
+    useEffect(() => {
+        setResult(null);
+    }, [nameModel]);
+    
 
     return (
         <>
@@ -53,6 +60,10 @@ export const Predictions = ({ nameModel, searching }) => {
                     <button type='submit' className='btn btn-primary'>
                         Realizar analisis
                     </button>
+
+                    {
+                        result && <label className='m-5'><strong>Resultado: </strong> {result} </label>
+                    }
 
                 </form>
             </div>
