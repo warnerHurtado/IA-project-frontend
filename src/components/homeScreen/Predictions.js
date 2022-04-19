@@ -8,7 +8,7 @@ const formsList = {
     bitcoin_model: [{ name: 'open', type: 'number', label: 'Precio apertura', error: 'Debe ingresar un precio' }, { name: 'low', type: 'number', label: 'Precio mas bajo', error: 'Debe ingresar un precio' }, { name: 'high', type: 'number', label: 'Precio mas alto', error: 'Debe ingresar un precio' }],
     breast_cancer: [{ name: 'perimeter', type: 'number', label: 'Perimetro', error: 'Debe ingresar un perimetro' }, { name: 'area', type: 'number', label: 'Area', error: 'Debe ingresar el area' }, { name: 'radio', type: 'number', label: 'Radio', error: 'Debe ingresar el radio' }],
     rossman_sales_model: [{ name: 'customers', type: 'number', label: 'Cantidad de clientes', error: 'Debe ingresar una cantidad de clientes' }],
-    horse_power_calculator: [{ name: 'yearSale', type: 'number', label: 'Año de reventa', error: 'Debe ingresar un año' }, { name: 'price', type: 'number', label: 'Precio en miles', error: 'Debe ingresar un precio' }, { name: 'eginie', type: 'number', label: 'Tamaño de la máquina', error: 'Debe ingresar un tamaño' }],
+    horse_power_calculator: [{ name: 'yearSale', type: 'number', label: 'Precio de reventa', error: 'Debe ingresar un año' }, { name: 'price', type: 'number', label: 'Precio en miles', error: 'Debe ingresar un precio' }, { name: 'eginie', type: 'number', label: 'Tamaño del motor', error: 'Debe ingresar un tamaño' }],
     salary_years_calculator: [{ name: 'years', type: 'number', label: 'Años de experiencia', error: 'Debe ingresar un año' }]
 };
 
@@ -35,7 +35,6 @@ export const Predictions = ({ nameModel, searching }) => {
 
     return (
         <>
-            <hr />
             <div className='container text-center'>
                 <h3>
                     {searching}	
@@ -52,17 +51,20 @@ export const Predictions = ({ nameModel, searching }) => {
                                     className="form-control" 
                                     id={form.name} 
                                     placeholder={form.label} 
-                                    name={form.name}/>
+                                    name={form.name}
+                                    required
+                                    />
+                                    
                                 <label >{form.label}</label>
                             </div>
                         ))
                     }
-                    <button type='submit' className='btn btn-primary'>
-                        Realizar analisis
+                    <button type='submit' className='btn btn-primary mt-3'>
+                        Predecir
                     </button>
 
                     {
-                        result && <label className='m-5'><strong>Resultado: </strong> {result} </label>
+                        result && <label className='m-5'><strong>Resultado: </strong> {result} 🦾</label>
                     }
 
                 </form>
