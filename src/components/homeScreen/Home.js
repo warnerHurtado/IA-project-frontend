@@ -43,6 +43,7 @@ export const Home = () => {
       results[results.length - 1]?.transcript.includes('ventas') && setNameModel('rossman_sales_model');
       results[results.length - 1]?.transcript.includes('caballo') && setNameModel('horse_power_calculator');
       results[results.length - 1]?.transcript.includes('salario') && setNameModel('salary_years_calculator');
+      results[results.length - 1]?.transcript.includes('cargos') && setNameModel('charges_model');
     }
 
   }, [results])

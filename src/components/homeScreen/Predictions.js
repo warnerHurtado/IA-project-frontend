@@ -9,7 +9,8 @@ const formsList = {
     breast_cancer: [{ name: 'perimeter', type: 'number', label: 'Perimetro', error: 'Debe ingresar un perimetro' }, { name: 'area', type: 'number', label: 'Area', error: 'Debe ingresar el area' }, { name: 'radio', type: 'number', label: 'Radio', error: 'Debe ingresar el radio' }],
     rossman_sales_model: [{ name: 'customers', type: 'number', label: 'Cantidad de clientes', error: 'Debe ingresar una cantidad de clientes' }],
     horse_power_calculator: [{ name: 'yearSale', type: 'number', label: 'Año de reventa', error: 'Debe ingresar un año' }, { name: 'price', type: 'number', label: 'Precio en miles', error: 'Debe ingresar un precio' }, { name: 'eginie', type: 'number', label: 'Tamaño de la máquina', error: 'Debe ingresar un tamaño' }],
-    salary_years_calculator: [{ name: 'years', type: 'number', label: 'Años de experiencia', error: 'Debe ingresar un año' }]
+    salary_years_calculator: [{ name: 'years', type: 'number', label: 'Años de experiencia', error: 'Debe ingresar un año' }],
+    charges_model: [{name: 'age', type: 'number', label: 'Edad', error: 'Debe ingresar una edad'}, {name: 'bmi', type: 'number', label: 'BMI', error: 'Debe ingresar un BMI'}]
 };
 
 let resultado = [];
