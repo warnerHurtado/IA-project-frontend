@@ -36,7 +36,6 @@ export const Predictions = ({ nameModel, searching }) => {
 
     return (
         <>
-            <hr />
             <div className='container text-center'>
                 <h3>
                     {searching}	
@@ -53,17 +52,20 @@ export const Predictions = ({ nameModel, searching }) => {
                                     className="form-control" 
                                     id={form.name} 
                                     placeholder={form.label} 
-                                    name={form.name}/>
+                                    name={form.name}
+                                    required
+                                    />
+                                    
                                 <label >{form.label}</label>
                             </div>
                         ))
                     }
-                    <button type='submit' className='btn btn-primary'>
-                        Realizar analisis
+                    <button type='submit' className='btn btn-primary mt-3'>
+                        Predecir
                     </button>
 
                     {
-                        result && <label className='m-5'><strong>Resultado: </strong> {result} </label>
+                        result && <label className='m-5'><strong>Resultado: </strong> {result} 🦾</label>
                     }
 
                 </form>

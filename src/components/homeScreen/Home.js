@@ -39,7 +39,7 @@ export const Home = () => {
       results[results.length - 1]?.transcript.includes('carro') && setNameModel('car_model');
       results[results.length - 1]?.transcript.includes('masa') && setNameModel('mass_model');
       results[results.length - 1]?.transcript.includes('bitcoin') && setNameModel('bitcoin_model');
-      results[results.length - 1]?.transcript.includes('cancer') && setNameModel('breast_cancer');
+      results[results.length - 1]?.transcript.includes('cáncer') && setNameModel('breast_cancer');
       results[results.length - 1]?.transcript.includes('ventas') && setNameModel('rossman_sales_model');
       results[results.length - 1]?.transcript.includes('caballo') && setNameModel('horse_power_calculator');
       results[results.length - 1]?.transcript.includes('salario') && setNameModel('salary_years_calculator');
@@ -55,7 +55,7 @@ export const Home = () => {
     <div className='animate__animated animate__bounceInRight'>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">HOME-IA</a>
+          <a className="navbar-brand" href="/">Jarvis-TEC 🤖</a>
 
           <ul className="nav justify-content-end">
             <li className="nav-item">
@@ -65,10 +65,10 @@ export const Home = () => {
         </div>
       </nav>
 
-      <div className='container text-center mt-3'>
-        <h1>Recording: {isRecording.toString()}</h1>
+      <div className='container text-center mt-3' style={{ color: 'white' }}>
+        <h1>{ isRecording ? 'Procesando tu linda voz...⏳' : 'Toca el botón para que te escuche Jarvis-TEC 🤖' }</h1>
         <button className='btn btn-primary' onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          {isRecording ? 'Stop Recording' : 'Start Recording'}
+          {isRecording ? 'Detener a Jarvis-TEC' : 'Hablar con Jarvis-TEC'}
         </button>
       </div>
 
@@ -85,8 +85,8 @@ export const Home = () => {
 
             :
 
-            <div className=" container alert alert-warning text-center" role="alert">
-              Dile a Jarvis con que quieres que te ayude.
+            <div className=" container alert alert-secondary text-center" role="alert">
+              Dile a <strong>Jarvis-TEC</strong> con que quieres que te ayude. 
             </div>
         }
       </div>
